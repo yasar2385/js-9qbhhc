@@ -12,8 +12,7 @@ const ROLE_JSON = {
   '5bd1c4e2cf51015102014427': { short: 'CE', full: 'Copyeditor' },
 };
 
-function get(val) {
-  var short = null;
+function get(val) {  
   Object.keys(ROLE_JSON).forEach((key) => {
     if (ROLE_JSON[key]['full'] == val) {
       console.log(ROLE_JSON[key]['short']);
@@ -57,5 +56,29 @@ function diffYMDHMS(date1, date2) {
   );
 
   return { years, months, days, hours, minutes, seconds };
-}//1634795613586
+} //1634795613586
 diffYMDHMS(moment(1643270648617), moment(1634795613586));
+
+var LAST = [
+  {
+    char: '%',
+    title: 'Percent sign',
+    ignore: false,
+    frag: false,
+    alert_msg: false,
+  },
+  {
+    char: '%',
+    title: 'Percent sign',
+    ignore: false,
+    frag: false,
+    alert_msg: false,
+  },
+  {
+    char: 'ʞ',
+    title: 'Latin small letter turned K',
+    ignore: false,
+    frag: false,
+    alert_msg: false,
+  },
+];
