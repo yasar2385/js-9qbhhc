@@ -82,3 +82,13 @@ var LAST = [
     alert_msg: false,
   },
 ];
+
+var result=LAST.filter(obj=> obj.ignore == false);
+console.log(result)
+
+console.log(
+  [1, 2, 3, 4].reduce((a, b) => a + b, 0)
+)
+console.log(
+  [1,25,8,9,65,9,5,85,5,8,.3,555].reduce((a, b) => a + b, 0)
+)
