@@ -12,7 +12,7 @@ const ROLE_JSON = {
   '5bd1c4e2cf51015102014427': { short: 'CE', full: 'Copyeditor' },
 };
 
-function get(val) {  
+function get(val) {
   Object.keys(ROLE_JSON).forEach((key) => {
     if (ROLE_JSON[key]['full'] == val) {
       console.log(ROLE_JSON[key]['short']);
@@ -83,12 +83,16 @@ var LAST = [
   },
 ];
 
-var result=LAST.filter(obj=> obj.ignore == false);
-console.log(result)
+var result = LAST.filter((obj) => obj.ignore == false);
+console.log(result);
 
+console.log([1, 2, 3, 4].reduce((a, b) => a + b, 0));
 console.log(
-  [1, 2, 3, 4].reduce((a, b) => a + b, 0)
-)
-console.log(
-  [1,25,8,9,65,9,5,85,5,8,.3,555].reduce((a, b) => a + b, 0)
-)
+  [1, 25, 8, 9, 65, 9, 5, 85, 5, 8, 0.3, 555].reduce((a, b) => a + b, 0)
+);
+
+var json = '{"editor": "Rich Text Editor","editorPanel": "Rich Text Editor panel","common": {"editorHelp": "Press ALT 0 for help"}}';
+var json_str = JSON.stringify(json);
+console.log(json_str);
+var json_par = JSON.parse(json);
+console.log(json_par);
