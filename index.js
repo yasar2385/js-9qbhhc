@@ -91,8 +91,119 @@ console.log(
   [1, 25, 8, 9, 65, 9, 5, 85, 5, 8, 0.3, 555].reduce((a, b) => a + b, 0)
 );
 
-var json = '{"editor": "Rich Text Editor","editorPanel": "Rich Text Editor panel","common": {"editorHelp": "Press ALT 0 for help"}}';
+var json =
+  '{"editor": "Rich Text Editor","editorPanel": "Rich Text Editor panel","common": {"editorHelp": "Press ALT 0 for help"}}';
 var json_str = JSON.stringify(json);
 console.log(json_str);
 var json_par = JSON.parse(json);
 console.log(json_par);
+var ROLE_IDS = {
+  '5b53536b4c4a803e9a5abf70': {
+    name: 'Author',
+    SelectorAttribute: 'showForAU',
+    Restrict_Selector: 'ForAU',
+    shortname: 'AU',
+    backup: '5b53536b4c4a803e9a5abf70_AU',
+    Stage: 'Authoring',
+    next_mail: 'PE_email',
+    next_role: 'PE_role',
+  },
+  '5b534de04c4a803e9a5abf45': {
+    name: 'Production Editor',
+    SelectorAttribute: 'showForPE',
+    Restrict_Selector: 'ForPE',
+    shortname: 'PE',
+    backup: '5b534de04c4a803e9a5abf45_PE',
+    Stage: 'PE Review',
+    next_mail: 'collator_email',
+    next_role: 'collator_role',
+  },
+  '5bcf15b1cf510152afba028a': {
+    name: 'Collator',
+    SelectorAttribute: 'showForCO',
+    Restrict_Selector: 'ForCO',
+    shortname: 'CO',
+    backup: '5bcf15b1cf510152afba028a_CO',
+    Stage: 'Collation',
+  },
+  '5bd1c4e2cf51015102014427': {
+    name: 'Copyeditor',
+    SelectorAttribute: 'showForCE',
+    Restrict_Selector: 'ForCE',
+    shortname: 'CE',
+    backup: '5bd1c4e2cf51015102014427_CE',
+    Stage: 'CE Review',
+  },
+  '5b534dc54c4a803e9a5abf41': {
+    name: 'Project Manager',
+    SelectorAttribute: 'showForPM',
+    Restrict_Selector: 'ForPM',
+    shortname: 'PM',
+    backup: '5b534dc54c4a803e9a5abf41_PM',
+    Stage: 'PM Review',
+  },
+  '5b534e334c4a803e9a5abf4c': {
+    name: 'Editor',
+    SelectorAttribute: 'showForED',
+    Restrict_Selector: 'ForED',
+    shortname: 'ED',
+    backup: '5b534e334c4a803e9a5abf4c_ED',
+    Stage: 'ED Review',
+  },
+  '5b534e5b4c4a803e9a5abf4f': {
+    name: 'Journal Manager',
+    SelectorAttribute: 'showForJM',
+    Restrict_Selector: 'ForJM',
+    shortname: 'JM',
+    backup: '5b534e5b4c4a803e9a5abf4f_JM',
+    Stage: 'JM Review',
+  },
+  '5bcf11635e7186178a22eee0': {
+    name: 'Proofreader',
+    SelectorAttribute: 'showForPR',
+    Restrict_Selector: 'ForPR',
+    shortname: 'PR',
+    backup: '5bcf11635e7186178a22eee0_PR',
+    Stage: 'Proof Reading',
+  },
+  XML: {
+    name: 'XML',
+    Stage: 'XML',
+    shortname: 'XML',
+  },
+};
+var ARR = [
+  '5b534e334c4a803e9a5abf4c',
+  '5b534de04c4a803e9a5abf45',
+  '5b53536b4c4a803e9a5abf70',
+  '5bcf15b1cf510152afba028a',
+  '5b534dc54c4a803e9a5abf41',
+  '5b534e5b4c4a803e9a5abf4f',
+];
+function stageComparator(stage1, stage2) {
+  let Order_Of_Stage = [
+    '',
+    'Authoring',
+    'PE Review',
+    'ED Review',
+    'Proof Reading',
+    'JM Review',
+    'CE Review',
+    'Collation',
+    'XML',
+  ];
+  if (ROLE_IDS[stage1]) {
+    stage1 = ROLE_IDS[stage1].Stage;
+    stage2 = ROLE_IDS[stage2].Stage;
+  }
+  let index1 = Order_Of_Stage.indexOf(stage1);
+  let index2 = Order_Of_Stage.indexOf(stage2);
+  if (index1 < index2) {
+    return -1;
+  }
+  if (index1 > index2) {
+    return 1;
+  }
+  return 0;
+}
+console.log(ARR.sort(stageComparator));
