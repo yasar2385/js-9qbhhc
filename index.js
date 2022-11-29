@@ -237,7 +237,7 @@ var roles_orders =    [
       "order" : 1,
       "role" : "5b53536b4c4a803e9a5abf70",
       "rolename" : "Author",
-      "status" : "active"
+      "status" : "signoff"
   }, 
   {
       "order" : 2,
@@ -252,8 +252,11 @@ var roles_orders =    [
       "status" : "active"
   }
 ];
+let active_role = null;
 Array.from(roles_orders).forEach(obj => {
-    console.log(obj)
-    console.log(obj.status)
-  
+    if(obj.status == "active" && !active_role){
+      console.log(obj)
+      active_role = obj.role
+    }  
 });
+console.log(active_role)
