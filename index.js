@@ -182,13 +182,13 @@ var ARR = [
 ];
 function stageComparator(stage1, stage2) {
   let Order_Of_Stage = [
-    '',
     'Authoring',
     'PE Review',
     'ED Review',
     'Proof Reading',
     'JM Review',
     'CE Review',
+    'PM Review',
     'Collation',
     'XML',
   ];
@@ -196,8 +196,10 @@ function stageComparator(stage1, stage2) {
     stage1 = ROLE_IDS[stage1].Stage;
     stage2 = ROLE_IDS[stage2].Stage;
   }
+  console.log([stage1, stage2]);
   let index1 = Order_Of_Stage.indexOf(stage1);
   let index2 = Order_Of_Stage.indexOf(stage2);
+  console.log([index1, index2]);
   if (index1 < index2) {
     return -1;
   }
@@ -207,3 +209,51 @@ function stageComparator(stage1, stage2) {
   return 0;
 }
 console.log(ARR.sort(stageComparator));
+
+var GET_ROLES = function (Obj, Option = {}) {
+  try {
+    let return_data = Object.entries(Obj)
+      .filter(function ([key, value]) {
+        if (Option.active) return value == 'active';
+        else return value != 'active';
+      })
+      .map(([key, value]) => key);
+    return return_data;
+  } catch (err) {
+    console.warn(err.message);
+  }
+};
+
+var one_obj = {
+  '5b53536b4c4a803e9a5abf70': {
+    $numberLong: '1658211917130',
+  },
+  '5b534e334c4a803e9a5abf4c': 'active',
+};
+
+console.log(GET_ROLES(one_obj, {active:false}))
+var roles_orders =    [ 
+  {
+      "order" : 1,
+      "role" : "5b53536b4c4a803e9a5abf70",
+      "rolename" : "Author",
+      "status" : "active"
+  }, 
+  {
+      "order" : 2,
+      "role" : "5b534e334c4a803e9a5abf4c",
+      "rolename" : "Editor",
+      "status" : "active"
+  }, 
+  {
+      "order" : 3,
+      "role" : "5bcf11635e7186178a22eee0",
+      "rolename" : "Proofreader",
+      "status" : "active"
+  }
+];
+Array.from(roles_orders).forEach(obj => {
+    console.log(obj)
+    console.log(obj.status)
+  
+});
