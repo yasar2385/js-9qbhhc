@@ -231,32 +231,32 @@ var one_obj = {
   '5b534e334c4a803e9a5abf4c': 'active',
 };
 
-console.log(GET_ROLES(one_obj, {active:false}))
-var roles_orders =    [ 
+console.log(GET_ROLES(one_obj, { active: false }));
+var roles_orders = [
   {
-      "order" : 1,
-      "role" : "5b53536b4c4a803e9a5abf70",
-      "rolename" : "Author",
-      "status" : "signoff"
-  }, 
+    order: 1,
+    role: '5b53536b4c4a803e9a5abf70',
+    rolename: 'Author',
+    status: 'signoff',
+  },
   {
-      "order" : 2,
-      "role" : "5b534e334c4a803e9a5abf4c",
-      "rolename" : "Editor",
-      "status" : "active"
-  }, 
+    order: 2,
+    role: '5b534e334c4a803e9a5abf4c',
+    rolename: 'Editor',
+    status: 'active',
+  },
   {
-      "order" : 3,
-      "role" : "5bcf11635e7186178a22eee0",
-      "rolename" : "Proofreader",
-      "status" : "active"
-  }
+    order: 3,
+    role: '5bcf11635e7186178a22eee0',
+    rolename: 'Proofreader',
+    status: 'active',
+  },
 ];
 let active_role = null;
-Array.from(roles_orders).forEach(obj => {
-    if(obj.status == "active" && !active_role){
-      console.log(obj)
-      active_role = obj.role
-    }  
+Array.from(roles_orders).forEach((obj) => {
+  if (obj.status == 'active' && !active_role) {
+    console.log(obj);
+    active_role = obj.role;
+  }
 });
-console.log(active_role)
+console.log(active_role);
