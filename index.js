@@ -15,12 +15,12 @@ const ROLE_JSON = {
 function get(val) {
   Object.keys(ROLE_JSON).forEach((key) => {
     if (ROLE_JSON[key]['full'] == val) {
-      console.log(ROLE_JSON[key]['short']);
+      console.log('===>'+ROLE_JSON[key]['short']);
     }
   });
 }
 
-get('Production Editor');
+console.log(get('Production Editor'));
 
 function diffYMDHMS(date1, date2) {
   let years = date1.diff(date2, 'year');
@@ -84,6 +84,7 @@ var LAST = [
 ];
 
 var result = LAST.filter((obj) => obj.ignore == false);
+console.log('===');
 console.log(result);
 
 console.log([1, 2, 3, 4].reduce((a, b) => a + b, 0));
