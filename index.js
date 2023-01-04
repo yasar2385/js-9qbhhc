@@ -256,7 +256,7 @@ var roles_orders = [
 let active_role = null;
 Array.from(roles_orders).forEach((obj) => {
   if (obj.status == 'active' && !active_role) {
-    console.log(obj);
+    //console.log(obj);
     active_role = obj.role;
   }
 });
