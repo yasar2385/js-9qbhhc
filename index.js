@@ -15,7 +15,7 @@ const ROLE_JSON = {
 function get(val) {
   Object.keys(ROLE_JSON).forEach((key) => {
     if (ROLE_JSON[key]['full'] == val) {
-      console.log('===>'+ROLE_JSON[key]['short']);
+      console.log('===>' + ROLE_JSON[key]['short']);
     }
   });
 }
@@ -261,3 +261,19 @@ Array.from(roles_orders).forEach((obj) => {
   }
 });
 console.log(active_role);
+
+var AUTH_SEL = {
+  journal:
+    "[person-group-type='author'] .surname,  [person-group-type='author'] .anonymous,  [person-group-type='author'] .collab",
+  book: "[person-group-type='author'] .surname,  [person-group-type='author'] .anonymous,  [person-group-type='author'] .collab",
+  default: '.surname,  .anonymous,  .collab',
+};
+
+var ref = document.querySelector('.ref');
+var arr = [AUTH_SEL.journal, AUTH_SEL.default];
+
+var reTurn = arr.map(function (selector, idx) {
+  console.log(idx);
+  return ref.querySelectorAll(selector).length;
+});
+console.log(reTurn);
